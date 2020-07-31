@@ -156,7 +156,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        var bytes = HexStringToByteArray("0201061bffaabbbeace2c56db5dffb48d2b060d0f5a71096e000010004c50000000000000000000000000000000000000000000000000000000000000000");
 	        var parser = new BeaconParser();
 	        parser.SetBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25");
-	        var beacon = parser.FromScanData(bytes, -55, null);
+	        var beacon = parser.FromScanData(bytes, -55, null, DateTime.UtcNow.Ticks);
 	        AssertEx.AreEqual("manufacturer should be parsed", "bbaa", beacon.Manufacturer.ToString("X").ToLowerInvariant());
 	    }
 	
@@ -167,7 +167,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        var parser = new BeaconParser();
 	        parser.SetAllowPduOverflow(Java.Lang.Boolean.False);
 	        parser.SetBeaconLayout("s:0-1=feaa,m:2-2=10,p:3-3:-41,i:4-20");
-	        var beacon = parser.FromScanData(bytes, -55, null);
+	        var beacon = parser.FromScanData(bytes, -55, null, DateTime.UtcNow.Ticks);
 	        AssertEx.Null("beacon should not be parsed", beacon);
 	    }
 	
@@ -177,7 +177,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        var bytes = HexStringToByteArray("0201060303aafe0d16aafe10e70102030405060708090a0b0c0d0e0f0102030405060708090a0b0c0d0e0f00000000000000000000000000000000000000");
 	        var parser = new BeaconParser();
 	        parser.SetBeaconLayout("s:0-1=feaa,m:2-2=10,p:3-3:-41,i:4-20v");
-	        var beacon = parser.FromScanData(bytes, -55, null);
+	        var beacon = parser.FromScanData(bytes, -55, null, DateTime.UtcNow.Ticks);
 	        AssertEx.AreEqual("URL Identifier should be truncated at 8 bytes", 8, beacon.Id1.ToByteArray().Length);
 	    }
 	
@@ -191,7 +191,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        parser.SetAllowPduOverflow(Java.Lang.Boolean.False);
 	        parser.SetBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25");
 	
-	        var beacon = parser.FromScanData(bytes, -55, null);
+	        var beacon = parser.FromScanData(bytes, -55, null, DateTime.UtcNow.Ticks);
 	        AssertEx.Null("beacon should not be parsed", beacon);
 	    }
 	
@@ -205,7 +205,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        var parser = new BeaconParser();
 	        parser.SetBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25");
 	
-	        var beacon = parser.FromScanData(bytes, -55, null);
+	        var beacon = parser.FromScanData(bytes, -55, null, DateTime.UtcNow.Ticks);
 	        AssertEx.NotNull("beacon should be parsed", beacon);
 	    }
 	
@@ -231,7 +231,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        Array.Copy(headerBytes, 0, advBytes, 0, headerBytes.Length);
 	        Array.Copy(bytes, 0, advBytes, headerBytes.Length, bytes.Length);
 	
-	        Beacon parsedBeacon = p.FromScanData(advBytes, -59, null);
+	        Beacon parsedBeacon = p.FromScanData(advBytes, -59, null, DateTime.UtcNow.Ticks);
 	        AssertEx.NotNull(String.Format("Parsed beacon from {0} should not be null", ByteArrayToHexString(advBytes)), parsedBeacon);
 	        double parsedLatitude = Int64.Parse(parsedBeacon.Id2.ToString().Substring(2), System.Globalization.NumberStyles.HexNumber) / 10000.0 - 90.0;
 	        double parsedLongitude = Int64.Parse(parsedBeacon.Id3.ToString().Substring(2), System.Globalization.NumberStyles.HexNumber) / 10000.0 - 180.0;
@@ -269,7 +269,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        var parser = new BeaconParser();
 	        parser.SetBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25");
 	
-	        var beacon = parser.FromScanData(bytes, -55, null);
+	        var beacon = parser.FromScanData(bytes, -55, null, DateTime.UtcNow.Ticks);
 	        AssertEx.Null("beacon not be parsed without an exception being thrown", beacon);
 	    }
 	
@@ -303,7 +303,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	        Array.Copy(bodyBytes, 0, bytes, headerBytes.Length, bodyBytes.Length);
 	
 	        // Try parsing the byte array
-	        Beacon parsedBeacon = parser.FromScanData(bytes, -59, null);
+	        Beacon parsedBeacon = parser.FromScanData(bytes, -59, null, DateTime.UtcNow.Ticks);
 	
 	        AssertEx.AreEqual("parsed beacon should contain a valid data on index 0", now, parsedBeacon.DataFields[0].LongValue());
 	        AssertEx.AreEqual("parsed beacon should contain a valid data on index 1", Convert.ToInt64(1234L), parsedBeacon.DataFields[1].LongValue());

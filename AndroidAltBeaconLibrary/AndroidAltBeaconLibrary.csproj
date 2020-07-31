@@ -14,11 +14,11 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <PackOnBuild>true</PackOnBuild>
-    <PackageId>AndroidAltBeaconLibrary_2_15</PackageId>
-    <PackageVersion>2.15</PackageVersion>
+    <PackageId>xamarin-android-altbeacon-library</PackageId>
+    <PackageVersion>2.17.1</PackageVersion>
     <Authors>AltBeacon.org</Authors>
-    <Owners>Marius Stein</Owners>
-    <PackageProjectUrl>https://https://github.com/mstein11/Android-AltBeacon-Library</PackageProjectUrl>
+    <Owners>Pavel Dvorak</Owners>
+    <PackageProjectUrl>https://github.com/pavlata2/xamarin-android-altbeacon-library</PackageProjectUrl>
     <Summary>A Xamarin Android library providing APIs to interact with beacons.</Summary>
     <PackageTags>android libraries altbeacon beacon ibeacon</PackageTags>
     <Description>A Xamarin Android library providing APIs to interact with beacons.</Description>

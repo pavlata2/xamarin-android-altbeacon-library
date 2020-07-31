@@ -122,15 +122,6 @@
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='sDistanceCalculator']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='sHardwareEqualityEnforced']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mIdentifiers']" name="visibility">public</attr>
-
-	<add-node path="/api/package[@name='org.altbeacon.beacon.service.scanner']">
-		<class abstract="false" deprecated="not deprecated" final="false" name="ScanFilterUtils.ScanFilterData" static="false" visibility="public" extends="java.lang.Object">
-			<constructor deprecated="not deprecated" final="false" name="ScanFilterData" static="false" type="org.altbeacon.beacon.service.scanner.ScanFilterUtils.ScanFilterData" visibility="public" />
-			<field name="serviceUuid" type="long" />
-			<field name="manufacturer" type="int" />
-			<field name="filter" type="byte[]" />
-			<field name="mask" type="byte[]" />
-		</class>
-	</add-node>
+	<attr path="/api/package[@name='org.altbeacon.beacon.service.scanner']/class[@name='ScanFilterUtils.ScanFilterData']" name="visibility">public</attr>
 
 </metadata>
