@@ -15,7 +15,7 @@
     <AndroidClassParser>class-parse</AndroidClassParser>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>xamarin-android-altbeacon-library</PackageId>
-    <PackageVersion>2.17.1</PackageVersion>
+    <PackageVersion>2.19</PackageVersion>
     <Authors>AltBeacon.org</Authors>
     <Owners>Pavel Dvorak</Owners>
     <PackageProjectUrl>https://github.com/pavlata2/xamarin-android-altbeacon-library</PackageProjectUrl>
@@ -58,7 +58,7 @@
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
     <None Include="Jars\AboutJars.txt" />
-    <LibraryProjectZip Include="Jars\android-beacon-library-2.17.1.aar" />
+    <LibraryProjectZip Include="Jars\android-beacon-library-2.19.aar" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
