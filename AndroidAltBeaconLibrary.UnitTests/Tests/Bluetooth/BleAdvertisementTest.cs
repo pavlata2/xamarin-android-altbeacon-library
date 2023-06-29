@@ -16,7 +16,7 @@ namespace AndroidAltBeaconLibrary.UnitTests
 	
 	    [Test]
 	    public void testCanParsePdusFromOtherBeacon() {
-	        byte[] bytes = HexStringToByteArray("0201060303aafe1516aafe00e72f234454f4911ba9ffa60000000000010c09526164426561636f6e20470000000000000000000000000000000000000000");
+	        byte[] bytes = HexStringToByteArray("0201060303aafe1516aafe00e72f234454f4911ba9ffa600000000000100000c09526164426561636f6e2047000000000000000000000000000000000000");
 	        BleAdvertisement bleAdvert = new BleAdvertisement(bytes);
 	        AssertEx.AreEqual("An otherBeacon advert should four three PDUs", 4, bleAdvert.Pdus.Count);
 	        AssertEx.AreEqual("First PDU should be flags type 1", 1, bleAdvert.Pdus[0].Type);
